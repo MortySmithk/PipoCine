@@ -104,10 +104,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let streamUrl = '';
 
+        // --- ALTERAÇÃO AQUI ---
+        // URLs foram atualizadas para usar o PrimeVicio
         if (type === 'movie' && id) {
-            streamUrl = `https://embedapi.vercel.app/stream/?id=${id}`;
+            streamUrl = `https://primevicio.vercel.app/embed/movie/${id}`;
         } else if (type === 'tv' && id && season && episode) {
-            streamUrl = `https://embedapi.vercel.app/play/?id=${id}/${season}/${episode}`;
+            streamUrl = `https://primevicio.vercel.app/embed/tv/${id}/${season}/${episode}`;
         }
 
         if (streamUrl) {
@@ -128,7 +130,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const card = event.target.closest('.grid-item-card');
         if (card) {
             const { id, type } = card.dataset;
-            window.open(`/watch.html?type=${type}&id=${id}`, '_blank');
+            // Alterado para abrir na mesma aba para uma melhor experiência
+            window.location.href = `/watch.html?type=${type}&id=${id}`;
         }
     });
 
